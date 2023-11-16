@@ -29,8 +29,8 @@ TextLabel.FontFace = Font.fromName("ComicNeueAngular")
 TextLabel.TextScaled = true
 TextLabel.BackgroundTransparency = 1
 TextLabel.Parent = Frame
---Server Variables
-local ChunkSize: number = workspace:GetAttribute("ChunkSize")
+--[[SERVER VARIABLES]]--
+local ChunkLength: number = workspace:GetAttribute("ChunkLength")
 --[[FUNTIONS]]--
 local function CalculateNumber(Number: number)
 	if Number < 0 then
@@ -41,10 +41,9 @@ local function CalculateNumber(Number: number)
 end
 
 local function UpdateText(DeltaTime: number)
-	local XPosition: number = CalculateNumber(CharacterPrimaryPart.Position.X / ChunkSize)
-	local ZPosition: number = CalculateNumber(CharacterPrimaryPart.Position.Z / ChunkSize)
+	local XPosition: number = CalculateNumber(CharacterPrimaryPart.Position.X / ChunkLength)
+	local ZPosition: number = CalculateNumber(CharacterPrimaryPart.Position.Z / ChunkLength)
 	TextLabel.Text = "Chunk Coord: (" .. XPosition .. ", " .. ZPosition .. ")"
 end
---[[SCRIPT]]
---
+--[[SCRIPT]]--
 RunService.Heartbeat:Connect(UpdateText)
